@@ -1,7 +1,9 @@
 //1.Import react and { Component }
 import React, { Component } from 'react';
 
-import { Media } from 'reactstrap';
+import { Media } from 'reactstrap'; //REPLACING WITH THE CARD 
+import { Card, CardImg, CardText, CardImgOverlay, CardBody, CardTitle } from 'reactstrap';
+
 
 
 //2. Create a class with the name Menu and add a constructor and render() methods to it
@@ -11,79 +13,75 @@ class Menu extends Component{
         super(props);
 
         //creating a state object which stores the properties
-        this.state = {
-            //dishes stores a list of dishes
-            dishes: [
-                {
-                    id: 0,
-                    name:'Uthappizza',
-                    image: 'assets/images/uthappizza.png',
-                    category: 'mains',
-                    label:'Hot',
-                    price:'4.99',
-                    description:'A unique combination of Indian Uthappam (pancake) and Italian pizza, topped with Cerignola olives, ripe vine cherry tomatoes, Vidalia onion, Guntur chillies and Buffalo Paneer.'                        },
-                 {
-                    id: 1,
-                    name:'Zucchipakoda',
-                    image: 'assets/images/zucchipakoda.png',
-                    category: 'appetizer',
-                    label:'',
-                    price:'1.99',
-                    description:'Deep fried Zucchini coated with mildly spiced Chickpea flour batter accompanied with a sweet-tangy tamarind sauce'                        },
-                 {
-                    id: 2,
-                    name:'Vadonut',
-                    image: 'assets/images/vadonut.png',
-                    category: 'appetizer',
-                    label:'New',
-                    price:'1.99',
-                    description:'A quintessential ConFusion experience, is it a vada or is it a donut?'                        },
-                 {
-                    id: 3,
-                    name:'ElaiCheese Cake',
-                    image: 'assets/images/elaicheesecake.png',
-                    category: 'dessert',
-                    label:'',
-                    price:'2.99',
-                    description:'A delectable, semi-sweet New York Style Cheese Cake, with Graham cracker crust and spiced with Indian cardamoms'                        }
-
-            ],
+        this.state = {//dishes stores a list of dishes
+            selectedDish :null,
+            
         }
     }
+
+    onDishSelect(dish){
+        this.setState({selectedDish:dish});
+    }
+
+
+    renderDish(dish){
+        if(dish!=null){
+            return(
+
+                <Card>
+                    <CardImg width="80%" object src={dish.image} alt={dish.name}/>
+                    <CardTitle>
+                        {dish.name}
+                    </CardTitle>
+                    <CardBody>
+                        {dish.description}
+                    </CardBody>
+                </Card>
+            );
+        } else{
+            return(<div></div>);
+        }
+
+    }
+
     //The render method returns the stuff to display on the app
     render(){
 
-        const menu = this.state.dishes.map((dish)=>{
+        const menu = this.props.dishes.map((dish)=>{
             return (
                 //map returns an array of divs [to menu] with the following jsx 
                 //review what is tag-
-                <div key={dish.id} className="col-12 mt-5">
-                    <Media tag="li"> 
+                <div key={dish.id} className="col-12 col-md-5  m-2">
+
+                    <Card onClick={()=> this.onDishSelect(dish)}> 
+
+                        <CardImg width="80%" object src={dish.image} alt={dish.name}/>
                         
-                        <Media left middle>
-
-                            <Media object src={dish.image} alt={dish.name}/>
-                            
-                        </Media>
-
-                        <Media body className="ml-5">
-                            <Media heading> {dish.name} </Media>
+                        <CardImgOverlay>
+                            <CardTitle> {dish.name} </CardTitle>
                             <p> {dish.description}</p>
-                        </Media>
+                        </CardImgOverlay>
 
-                    </Media>
+                    </Card>
+                   
                 </div>
+                     
                 
             );
         });
+
         return(
 
 
             <div className="container">
                 <div className="row">
-                    <Media list>
+                   
                         {menu};
-                    </Media>
+                   
+                </div>
+                <div className="row">
+                    
+                    {this.renderDish(this.state.selectedDish)}
                 </div>
             </div>
 
