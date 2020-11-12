@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 
 import { Media } from 'reactstrap'; //REPLACING WITH THE CARD 
 import { Card, CardImg, CardText, CardImgOverlay, CardBody, CardTitle } from 'reactstrap';
+import DishDetail from './DishdetailComponent';
 
 
 
@@ -17,6 +18,11 @@ class Menu extends Component{
             selectedDish :null,
             
         }
+        console.log("Menu component constructor is involed");
+    }
+
+    componentDidMount(){
+        console.log('Menu componenet componentDidMount is invoked');
     }
 
     onDishSelect(dish){
@@ -59,7 +65,7 @@ class Menu extends Component{
                         
                         <CardImgOverlay>
                             <CardTitle> {dish.name} </CardTitle>
-                            <p> {dish.description}</p>
+                            {/*<p> {dish.description}</p>*/}
                         </CardImgOverlay>
 
                     </Card>
@@ -69,6 +75,7 @@ class Menu extends Component{
                 
             );
         });
+        console.log("Menu component render in invoked");
 
         return(
 
@@ -79,10 +86,18 @@ class Menu extends Component{
                         {menu};
                    
                 </div>
+
+                <div>
+                    <DishDetail dish={this.state.selectedDish} />
+                </div>
+
+                {/*
                 <div className="row">
                     
                     {this.renderDish(this.state.selectedDish)}
                 </div>
+                */}
+
             </div>
 
 
