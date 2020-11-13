@@ -1,17 +1,11 @@
 import React, { Component } from 'react';
-import { Card, CardBlock, CardBody, CardTitle, CardImg } from 'reactstrap';
+import { Card,  CardBody, CardTitle, CardImg } from 'reactstrap';
 
 
 
 class DishDetail extends Component{
 
-    constructor(props){
-        super(props);
-
-        this.state={
-            selectedDish : null,
-        };
-    }
+    
     //to convert the given date to specified date format
     convert(date){
         const retDate = new Date(date);
@@ -27,7 +21,6 @@ class DishDetail extends Component{
 
                 return(
                     <div>
-                        
                         <p> {comment.comment}</p>
                         <div>
                             <p> {comment.author} , {this.convert(comment.date)}</p>
@@ -36,31 +29,32 @@ class DishDetail extends Component{
                 );
             });
             return(
+                <div className="container">
+                    <div className="row">
+                        <div className="col-12 col-md-5 m-2">
+                            <Card>
+                                <CardImg width="80%" object src={dish.image} alt={dish.name}/>
+                                <CardBody>
+                                    <CardTitle>
+                                        {dish.name}
+                                    </CardTitle>
+                                    {dish.description}
+                                    
+                                </CardBody>
+                            </Card>
 
-                <div className="row">
-    
-                    <div className="col-12 col-md-5 m-1">
-                        <Card>
-                            <CardImg width="80%" object src={dish.image} alt={dish.name}/>
+                        </div>
+                        
+                        <div className="col-12 col-md-5 m-1">
+                            <h3> Comments</h3>
+                            <p> {comments}</p>
 
-                            <CardBody>
-                                <CardTitle>
-                                    {dish.name}
-                                </CardTitle>
-                                {dish.description}
-                                
-                            </CardBody>
-                        </Card>
-    
+                        </div>
+
                     </div>
-                    
-                    <div className="col-12 col-md-5 m-1">
-                        <h3> Comments</h3>
-                        <p> {comments}</p>
-    
-                    </div>
-    
-                </div>    
+
+                </div>
+                   
             );
         }
         else{
