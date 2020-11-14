@@ -52,7 +52,8 @@ class Menu extends Component{
                 //review what is tag-
                 <div key={dish.id} className="col-12 col-md-5  m-2">
 
-                    <Card onClick={()=>this.props.onClick(dish.id)}> 
+                    <Card > 
+                        {/*onClick={()=>this.props.onClick(dish.id)}*/} 
 
                         <CardImg width="80%" object src={dish.image} alt={dish.name}/>
                         

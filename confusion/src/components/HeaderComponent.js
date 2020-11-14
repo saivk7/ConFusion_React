@@ -16,26 +16,20 @@ class Header extends Component{
 
     toggleNav(){
         this.setState({
-            isNavOpen: !this.state.isNavOpen
+            isNavOpen: !this.state.isNavOpen,
         });
     }
 
     render(){
         return(
             //react fragment is being returned here
-            <React.Fragment>
+            <div>
                 <Navbar dark expand="md">
                     <div className="container">
                         <NavbarToggler onClick={this.toggleNav} />
-
-                    
-                    <NavbarBrand className="mr-auto" href="/"> 
-                    <img  src="assets/images/logo.png" height="30" width="41" />
-                    Ristorante conFusion
-                    <img src={logo}  className="App-logo" alt="logo" height="30" width="41"/>
-                    </NavbarBrand>
-                    <Collapse isOpen={this.state.isNavOpen} navbar>
-                        <Nav navbar>
+                        <NavbarBrand className="mr-auto" href="/"><img src='assets/images/logo.png' height="30" width="41" alt='Ristorante Con Fusion' /></NavbarBrand>
+                        <Collapse isOpen={this.state.isNavOpen} navbar>
+                            <Nav navbar>
                             <NavItem>
                                 <NavLink className="nav-link" to="/home"> 
                                     <span className="fa fa-home fa-md"> Home</span>
@@ -76,7 +70,7 @@ class Header extends Component{
                 </Jumbotron>
 
 
-            </React.Fragment>
+            </div>
 
         );
     }
