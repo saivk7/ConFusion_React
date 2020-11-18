@@ -1,6 +1,7 @@
 import React,{ Component} from 'react' ;
 import { Navbar, NavbarBrand, Nav, NavbarToggler, Collapse, Jumbotron, NavItem } from 'reactstrap';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
+
 import logo from '../logo.svg';
 
 class Header extends Component{
@@ -59,9 +60,13 @@ class Header extends Component{
                         <div className="row row-header" >
                             <div className="col-12 col-sm-6">
                                 <h1> Ristorante Con Fusion</h1>
+                                <Link to='/menu'>
                                 <p>
                                 We take inspiration from the World's best cuisines, and create a unique fusion experience. Our lipsmacking creations will tickle your culinary senses!
                                 </p>
+
+                                </Link>
+                             
 
                             </div>
                         </div>
