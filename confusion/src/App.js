@@ -5,7 +5,11 @@ import Main from './components/MainComponent';
 import './App.css';
 import { BrowserRouter } from 'react-router-dom';
 
+import { Provider } from 'react-redux';
+ import { ConfigureStore } from './redux/configureStore';
+ 
 
+ const store = ConfigureStore();
 
 
 class App extends Component {
@@ -16,23 +20,20 @@ class App extends Component {
   render() {
     return (
       //adding browser Router 
-      <BrowserRouter>
-        <div >
-          
-          <Main />
-          {/*
-          <header className="App-header">
-            <img src={logo} className="App-logo" alt="logo" />
-            <h1 className="App-title">Welcome to React</h1>
-          </header>
-          <p className="App-intro">
-            To get started, edit <code>src/App.js</code> and save to reload.
-          </p>
-          */}
+      <Provider store = {store} >
+          <BrowserRouter>
+          <div>
+            <Main />
+          </div>
+        </BrowserRouter>
+      </Provider>
+      
 
-        </div>
-        
-      </BrowserRouter>
+
+
+
+
+
         
     );
   }
