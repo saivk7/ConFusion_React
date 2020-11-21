@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Card,  CardBody, CardTitle, CardImg, Breadcrumb,BreadcrumbItem } from 'reactstrap';
 
 import {Link } from 'react-router-dom';
-
+import CommentForm from './CommentFormComponent';
 
 class DishDetail extends Component{
 
@@ -22,11 +22,14 @@ class DishDetail extends Component{
 
                 return(
                     <div>
-                        <p> {comment.comment}</p>
                         <div>
-                            <p> {comment.author} , {this.convert(comment.date)}</p>
+                            <p> {comment.comment}</p>
+                            <div>
+                                <p> {comment.author} , {this.convert(comment.date)}</p>
+                            </div>
                         </div>
                     </div>
+                 
                 );
             });
             return(
@@ -62,6 +65,7 @@ class DishDetail extends Component{
                         <div className="col-12 col-md-5 m-1">
                             <h3> Comments</h3>
                             <p> {comments1}</p>
+                            <CommentForm />
 
                         </div>
 
