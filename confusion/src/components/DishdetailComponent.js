@@ -15,17 +15,18 @@ class DishDetail extends Component{
         return res;
     }
 
-    renderDish(dish,comments){
+    renderDish(dish,comments,addComment,dishId){
         
         if(dish!=null){
+            var num = 1;
             const comments1 = comments.map((comment)=>{
 
                 return(
                     <div>
                         <div>
-                            <p> {comment.comment}</p>
+                            <p> {num++} . {comment.comment}</p>
                             <div>
-                                <p> {comment.author} , {this.convert(comment.date)}</p>
+                                <p> Author: {comment.author} , Date: {this.convert(comment.date)}</p>
                             </div>
                         </div>
                     </div>
@@ -65,7 +66,7 @@ class DishDetail extends Component{
                         <div className="col-12 col-md-5 m-1">
                             <h3> Comments</h3>
                             <p> {comments1}</p>
-                            <CommentForm />
+                            <CommentForm dishId={dishId} addComment={addComment} />
 
                         </div>
 
@@ -88,9 +89,11 @@ class DishDetail extends Component{
     render(){
         const dish = this.props.dish;
         const comments1 = this.props.comments;
+        const addComment1 = this.props.addComment;
+        const dishId1 = this.props.dish.id;
         return(
             <div>
-                 {this.renderDish(dish,comments1)}
+                 {this.renderDish(dish,comments1,addComment1,dishId1)}
             </div>
         );
     }
