@@ -3,6 +3,9 @@ import { Card,  CardBody, CardTitle, CardImg, Breadcrumb,BreadcrumbItem } from '
 
 import {Link } from 'react-router-dom';
 import CommentForm from './CommentFormComponent';
+//react-w4
+
+import {Loading } from './loadingComponent';
 
 class DishDetail extends Component{
 
@@ -33,6 +36,29 @@ class DishDetail extends Component{
                  
                 );
             });
+
+            if(this.props.isLoading){
+                return (
+                    <div className="container">
+                        <div className='row'>
+                            <Loading />
+
+                        </div>
+                    </div>
+                );
+            }
+            else if (this.props.errMess){
+                return (
+                    <div className="container">
+                        <div className='row'>
+                            <h4> {this.props.errMess} </h4>
+
+                        </div>
+                    </div>
+                );
+
+            }
+            else
             return(
                 <div className="container">
                     <div className="row">

@@ -30,13 +30,7 @@ class App extends Component {
           </div>
         </BrowserRouter>
       </Provider>
-      
-
-
-
-
-
-
+  
         
     );
   }
